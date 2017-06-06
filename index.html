@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <style>
+         #map {
+          height: 700px;
+          width: 100%;
+         }
+      </style>
+    </head>
+
+    <body>
+      <div class="container">
+        <p>Below will be the map</p>
+        <center>
+        <div class="row">
+          <div class="col s6">
+            <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">skip_previous</i></a>
+          </div>
+          <div class="col s6">
+            <a onclick="nxtlocation()" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">skip_next</i></a>
+          </div>
+        </div>
+        <center>
+        <div id="map"></div>
+      </div>
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+      <script>
+      var map;
+      function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 6,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+      function nxtlocation() {
+        var nearaust = {lat: -29.429216, lng: 146.612934};
+        map.panTo(nearaust);
+        /*
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 6,
+          center: nearaust
+        });
+        */
+
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQfsppvISgx3wCcM05dDoblHCWHPPCdt4&callback=initMap">
+    </script>
+    </body>
+  </html>
